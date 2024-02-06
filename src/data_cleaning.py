@@ -1,7 +1,6 @@
 import logging
 from abc import ABC, abstractmethod
 from typing import Union
-from pandas.core.api import DataFrame as DataFrame, Series as Series
 import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
@@ -31,7 +30,7 @@ class DataPreProcessStrategy(DataStrategy):
                     "order_delivered_carrier_date",
                     "order_delivered_customer_date",
                     "order_estimated_delivery_date",
-                    "order_estimated_timestamp",
+                    "order_purchase_timestamp",
                 ],
                 axis=1,)
             data["product_weight_g"].fillna(data["product_weight_g"].median(), inplace=True)
@@ -85,4 +84,3 @@ class DataCleaning:
         except Exception as e:
             logging.error("Error in handling data: {}.format (e)")
             raise e
-        
